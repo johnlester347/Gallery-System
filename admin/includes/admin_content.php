@@ -43,9 +43,9 @@
         // $user->first_name = "JL";
         // $user->last_name = "P";
 
-        // $user->add();
+        // $user->create();
 
-        $user = User::find_user_by_id(38);
+        $user = User::find_user_by_id(89);
         $user->delete();
 
         
