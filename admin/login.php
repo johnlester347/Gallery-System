@@ -22,13 +22,13 @@ if(isset($_POST['submit'])){
         $the_message = "Your username and password are incorrect";
     }
     
-} else {
+    } else {
 
-    $username = "";
-    $password = "";
-    $the_message = "";
-    
-}
+        $username = "";
+        $password = "";
+        $the_message = "";
+        
+    }
 
 ?>
 

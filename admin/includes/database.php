@@ -43,6 +43,12 @@ class Database {
         
     }
 
+    public function die_query() { // dimo ito magagamit sa labas ng class
+
+        die("QUERY FAILED" . $this->connection->error); 
+
+    }
+
     public function escape_string($string) {
 
         $escaped_string = $this->connection->real_escape_string($string); // this is for cleaning the query para
@@ -50,6 +56,11 @@ class Database {
 
     }
 
+    public function the_insert_id() {
+
+        return  $this->connection->insert_id;
+
+    }
 
 }
 

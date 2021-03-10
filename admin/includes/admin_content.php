@@ -30,11 +30,25 @@
         //     echo $user->username . "<br>";
         // }
 
-        $found_user = User::find_user_by_id(2);
+        // $found_user = User::find_user_by_id(2);
         
         // echo $found_user->username;
 
         //  echo $session->message(123);
+
+        // $user = new User();
+
+        // $user->username = "JL";
+        // $user->password = "password";
+        // $user->first_name = "JL";
+        // $user->last_name = "P";
+
+        // $user->add();
+
+        $user = User::find_user_by_id(38);
+        $user->delete();
+
+        
 
 
         ?>
