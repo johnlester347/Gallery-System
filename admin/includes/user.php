@@ -132,6 +132,14 @@ class User {
 
     }
 
+    public function delete() {
+
+        global $database;
+
+        $sql = "DELETE FROM users WHERE id = " . $database->escape_string($this->id) . " ";
+        $database->query($sql);
+
+    }
 
 }
 
