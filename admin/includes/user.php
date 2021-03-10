@@ -128,7 +128,7 @@ class User {
 
         $database->query($sql);
 
-        return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+        return (mysqli_affected_rows($database->connection) == 1) ? true : false; 
 
     }
 
@@ -136,9 +136,10 @@ class User {
 
         global $database;
 
-        $sql = "DELETE FROM users WHERE id = " . $database->escape_string($this->id) . " ";
-        $database->query($sql);
+        $sql = "DELETE FROM users WHERE id = " . $database->escape_string($this->id) . " LIMIT 1";
 
+        $database->query($sql);
+        return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 
 }

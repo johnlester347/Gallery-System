@@ -43,11 +43,11 @@
         // $user->first_name = "JL";
         // $user->last_name = "P";
 
-        // $user->create();
+        // $user->add();
 
-        $user = User::find_user_by_id(55);
-        $user->last_name = 'PAMPLONAAA';
-        $user->update();
+        $user = User::find_user_by_id(38);
+        $user->delete();
+
         
 
 
