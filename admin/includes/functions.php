@@ -21,7 +21,7 @@ if(is_file($the_path) && !class_exists($class)){
 
 spl_autoload_register('classAutoLoader');
 
-function redirect($location){
+function redirect($location){ // this method will going to redirect you sa iinput mo na file sa parameter but be sure to include double qoutes
 
     header("Location: {$location}");
 }

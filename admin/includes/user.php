@@ -95,15 +95,27 @@ class User {
 
     }
 
+    public function properties() {
+
+        return get_object_vars($this); 
+
+        // $properties = get_object_vars($this); 
+
+        // print_r(implode(",",array_keys($properties))); // this will output seperated by comma = id,username,password,first_name,last_name
+        // print_r(array_keys($properties)); // this will output lahat ng laman ng properties =
+        // Array ( [id] => [username] => [password] => [first_name] => [last_name] => )
+
+    }
+
     public function create() {
+
         global $database;
 
-        $sql = "INSERT INTO " . self::$db_table . "(username, password, first_name, last_name) ";
-        $sql .= "VALUES ('";
-        $sql .= $database->escape_string($this->username) . "', '";
-        $sql .= $database->escape_string($this->password) . "', '";
-        $sql .= $database->escape_string($this->first_name) . "', '";
-        $sql .= $database->escape_string($this->last_name) . "')";
+        $properties = $this->properties();  
+
+        $sql = "INSERT INTO " . self::$db_table . "(" . implode(",", array_keys($properties)) . ")"; 
+        // this will output seperated by comma = id,username,password,first_name,last_name
+        $sql .= " VALUES ('" . implode("','", array_keys($properties)) . "')";
 
         if($database->query($sql)){
 

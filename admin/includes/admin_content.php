@@ -45,8 +45,11 @@
 
         // $user->create();
 
-        $user = User::find_user_by_id(89);
-        $user->delete();
+        // $user = User::find_user_by_id(89);
+        // $user->delete();
+
+        $user = new User();
+        $user->properties();
 
         
 
