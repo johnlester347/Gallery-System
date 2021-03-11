@@ -36,20 +36,21 @@
 
         //  echo $session->message(123);
 
-        // $user = new User();
+        $user = new User();
 
-        // $user->username = "JL";
-        // $user->password = "password";
-        // $user->first_name = "JL";
-        // $user->last_name = "P";
+        $user->username = "JL";
+        $user->password = "password";
+        $user->first_name = "JL";
+        $user->last_name = "P";
 
-        // $user->create();
+        $user->create();
 
         // $user = User::find_user_by_id(89);
         // $user->delete();
 
-        $user = new User();
-        $user->properties();
+
+        // $user = new User();
+        // $user->create();
 
         
 
