@@ -2,9 +2,9 @@
 
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-define('SITE_ROOT', DS . 'C:' . DS . 'xampp' . DS . 'htdocs' . DS . 'gallery');
+define('SITE_ROOT', DS . 'C:' . DS . 'xampp' . DS . 'htdocs' . DS . 'gallery'); // this is the path or the location of all my files in xampp 
 
-defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT.DS.'admin'.DS.'includes');
+defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT . DS . 'admin' . DS .'includes'); // eto naman yung location pag nasa htdocs/gallery kana
 
 require_once "functions.php";
 require_once "config.php";

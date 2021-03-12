@@ -15,7 +15,7 @@ class Photo extends Db_object {
 
     public $tmp_path;
     public $upload_directory = "images";
-    public $custom_error = array();
+    public $errors = array();
     public $upload_errors_array = array (
 
         UPLOAD_ERR_OK         => "There is no error",
@@ -28,7 +28,70 @@ class Photo extends Db_object {
         UPLOAD_ERR_EXTENSION   => "A PHP extension stopped the file upload."
     );
 
+    public function set_file($file) {
 
+        if(empty($file) || !$file || !is_array($file)) {
+
+            $this->errors[] = "There was no file uploaded here";
+            return false;
+
+        } else if($file['error'] !=0) {
+
+            $this->errors[] = $this->upload_errors_array[$file['error']];
+            return false;
+
+        } else {
+
+            $this->filename = basename($file['name']);
+            $this->tmp_path = $file['tmp_name'];
+            $this->type = $file['type'];
+            $this->size = $file['size'];
+
+        }
+
+
+    }
+
+    public function save() {
+
+        if($this->id){
+
+            $this->update();
+
+        } else {
+
+            if(!empty($this->errors)) {
+                return false;
+            }
+
+            if(empty($this->filename) || empty($this->tmp_path)) {
+                $this->errors[] = "the file was not available";
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+
+            if(file_exists($target_path)) {
+                $this->errors[] = "This file {$this->filename} already exists";
+                return false;
+            }
+
+            if(move_uploaded_file($this->tmp_path, $target_path)){
+                if($this->create()){
+                    unset($this->tmp_path);
+                }
+            } else {
+                $this->errors[] = "The file directory probably does not have permission";
+                return false;
+            }
+
+            $this->create(); 
+
+        }
+
+
+
+    }
 
 
 
