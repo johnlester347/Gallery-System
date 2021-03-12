@@ -35,7 +35,7 @@ class Photo extends Db_object {
             $this->errors[] = "There was no file uploaded here";
             return false;
 
-        } else if($file['error'] !=0) {
+        } elseif($file['error'] !=0) {
 
             $this->errors[] = $this->upload_errors_array[$file['error']];
             return false;
@@ -44,8 +44,8 @@ class Photo extends Db_object {
 
             $this->filename = basename($file['name']);
             $this->tmp_path = $file['tmp_name'];
-            $this->type = $file['type'];
-            $this->size = $file['size'];
+            $this->type     = $file['type'];
+            $this->size     = $file['size'];
 
         }
 
@@ -60,25 +60,26 @@ class Photo extends Db_object {
 
         } else {
 
-            if(!empty($this->errors)) {
+            if(!empty($this->errors)) { // if this array error is not empty
                 return false;
             }
 
-            if(empty($this->filename) || empty($this->tmp_path)) {
-                $this->errors[] = "the file was not available";
+            if(empty($this->filename) || empty($this->tmp_path)) { // if the property file is empty and property tmp_path is empty
+                $this->errors[] = "the file was not available"; // add this inside the property error which is array
                 return false;
             }
 
-            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename; // this is the location or directory of the file
 
-            if(file_exists($target_path)) {
-                $this->errors[] = "This file {$this->filename} already exists";
+            if(file_exists($target_path)) { // if yung $target_path ay true the execute this  
+                $this->errors[] = "This file {$this->filename} already exists"; // Then assign this string to inside the array error
                 return false;
             }
 
-            if(move_uploaded_file($this->tmp_path, $target_path)){
-                if($this->create()){
+            if(move_uploaded_file($this->tmp_path, $target_path)){ // this will going to move the temporary file to permanent location
+                if($this->create()){ // 
                     unset($this->tmp_path);
+                    return true;
                 }
             } else {
                 $this->errors[] = "The file directory probably does not have permission";
