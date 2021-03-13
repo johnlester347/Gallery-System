@@ -36,14 +36,33 @@
                 <h1 class="page-header">
                     Photos
                 </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
+                <div class="col-md-12">
+                
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Id</th>
+                        <th>File Name</th>
+                        <th>Title</th>
+                        <th>Size</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                    </tr>
+                    </tbody>
+                    
+                </table>
+                
+                
+                </div>
             </div>
         </div>
         <!-- /.row -->

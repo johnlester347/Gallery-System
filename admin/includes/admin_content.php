@@ -25,7 +25,7 @@
         // $user = User::instantiation($found_user); 
         // echo $user->id;
 
-        // $users = User::find_all_users(); 
+        // $users = User::find_all(); 
         // foreach($users as $user) {
         //     echo $user->username . "<br>";
         // }
@@ -36,18 +36,29 @@
 
         //  echo $session->message(123);
 
+        // $photos = new Photo();
+
+        // $photos->title       = "Javascript";
+        // $photos->description = "This is a text";
+        // $photos->filename    = "Photo.png";
+        // $photos->type        = "Php file";
+        // $photos->size        = "12";
+
+        // $photos->save();
+
+        // $user = User::find_user_by_id(89);
+        // $user->delete();
+
+
         // $user = new User();
+        // $user->create();
 
-        // $user->username = "JL";
-        // $user->password = "password";
-        // $user->first_name = "JL";
-        // $user->last_name = "P";
+        // $photos = Photo::find_all(); 
+        // foreach($photos as $photo) {
+        //     echo $photo->title . "<br>";
+        // }
 
-        // $user->add();
-
-        $user = User::find_user_by_id(38);
-        $user->delete();
-
+            // echo INCLUDES_PATH;
         
 
 
