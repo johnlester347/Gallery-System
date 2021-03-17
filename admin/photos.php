@@ -1,5 +1,16 @@
 <?php include "includes/admin_header.php"; ?>
 
+
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
+
+
+<?php 
+
+$photos = Photo::find_all();
+
+
+?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,20 +54,27 @@
                     <tr>
                         <th>Photo</th>
                         <th>Id</th>
-                        <th>File Name</th>
+                        <th>Filename</th>
                         <th>Title</th>
                         <th>Size</th>
                     </tr>
                     </thead>
 
                     <tbody>
+
+                    <?php foreach($photos as $photo) : ?>
+
                     <tr>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
+                        <td><img width="100" src="<?php echo $photo->picture_path(); ?>" alt=""></td>
+                        <td><?php echo $photo->id; ?></td>
+                        <td><?php echo $photo->filename; ?></td>
+                        <td><?php echo $photo->title; ?></td>
+                        <td><?php echo $photo->size; ?></td>
+                        <td><a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id?>">Delete</a></td>
                     </tr>
+
+                    <?php endforeach; ?>
+
                     </tbody>
                     
                 </table>

@@ -9,20 +9,14 @@
 
         <?php 
 
-        // $user = User::find_all_users(); 
-        // while($row = mysqli_fetch_array($user)){
-        //     $name = $row['first_name'];
 
-        //     echo $name . "<br>";
-        // }
+    
+        // $new_user = new Photo(); // ininstantiate ko kasi gagamitin ko yung properties or variable sa User na naka public pero walang value
 
-        // $found_user = User::find_user_by_id(1); // eto yung pinaka magandang way ng pag tawag na no need mag instantiate ng class just add static
+        // echo $new_user->size;  // eto sya bali public $id kasi sya now using instantiate we dont need to use dollar sign
+     
 
-        // $new_user = new User(); // ininstantiate ko kasi gagamitin ko yung properties or variable sa User na naka public pero walang value
-
-        // $new_user->id = $user['id'];  // eto sya bali public $id kasi sya now using instantiate we dont need to use dollar sign
- 
-        // $user = User::instantiation($found_user); 
+        // $user = Photo::instantiation($found_user); 
         // echo $user->id;
 
         // $users = User::find_all(); 
@@ -36,30 +30,36 @@
 
         //  echo $session->message(123);
 
-        // $photos = new Photo();
-
-        // $photos->title       = "Javascript";
-        // $photos->description = "This is a text";
-        // $photos->filename    = "Photo.png";
-        // $photos->type        = "Php file";
-        // $photos->size        = "12";
-
-        // $photos->save();
-
-        // $user = User::find_user_by_id(89);
-        // $user->delete();
-
-
-        // $user = new User();
-        // $user->create();
-
-        // $photos = Photo::find_all(); 
-        // foreach($photos as $photo) {
-        //     echo $photo->title . "<br>";
-        // }
-
-            // echo INCLUDES_PATH;
         
+        /*-------------------------------------------------------------------------------------*/
+            // $delete_this = new Photo;
+            // $delete_this->title = "New";
+            // $delete_this->description = "This is new";
+            // $delete_this->filename = "new.jpg";
+            // $delete_this->type = "test.php";
+            // $delete_this->size = "128mb";
+
+            // $delete_this->create();
+
+            // $delete_this = Photo::find_by_id(16);
+
+            // $delete_this->title = "PHP";
+            // $delete_this->description = "I love coding";
+            // $delete_this->filename = "new_test.php";
+            // $delete_this->type = "test.php";
+            // $delete_this->size = "1mb";
+
+            // $delete_this->save();
+
+            // $delete_this = Photo::find_all();
+            // foreach($delete_this as $photo){
+            //   echo  $photo->title . "<br>";
+            // }
+       /*-------------------------------------------------------------------------------------*/         
+       
+   
+
+    
 
 
         ?>

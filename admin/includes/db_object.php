@@ -8,18 +8,12 @@ class Db_object {
     
     }    
 
-    public static function find_user_by_id($id) {
+    public static function find_by_id($id) {
         global $database;
 
-        $the_result_array = static::find_by_query("SELECT * FROM users WHERE id = $id"); 
+        $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = $id "); 
 
-        return !empty($the_result_array) ? array_shift($the_result_array) : false; // this is a ternary operator 
-
-        // if(!empty($the_result_array)) {
-        //     $name = array_shift(); // grab the first item in the array
-        // } else {
-        //     return false;
-        // }
+        return !empty($the_result_array) ? array_shift($the_result_array) : false; // this will grab the first item in the array 
 
     }
 
@@ -39,15 +33,11 @@ class Db_object {
 
     public static function instantiation($the_record) { // the $found_user is a record from database using SELECT * FROM users
         
-        $calling_class =  get_called_class();
+        $calling_class = get_called_class();
 
         $the_object = new $calling_class; // eto yung parang || new User || pag naka instantiate
 
-        // $the_object->id         = $the_record['id']; // eto yung record sa database by passing parameter para mapalitan  
-        // $the_object->username   = $the_record['username'];  
-        // $the_object->password   = $the_record['password'];  
-        // $the_object->first_name = $the_record['first_name'];  
-        // $the_object->last_name  = $the_record['last_name'];  
+        // $the_object->id = $the_record['id']; // eto yung record sa database by passing parameter para mapalitan  
 
         foreach($the_record as $the_attribute => $value) { // $key = $row and $value = ['username'];
 
