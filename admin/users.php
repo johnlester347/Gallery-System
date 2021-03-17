@@ -1,5 +1,16 @@
 <?php include "includes/admin_header.php"; ?>
 
+
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
+
+
+<?php 
+
+$users = User::find_all();
+
+
+?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -10,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../index.php">Visit Homepage</a>
+                <a class="navbar-brand" href="index.php">Admin Gallery</a>
             </div>
 
 
@@ -36,14 +47,44 @@
                 <h1 class="page-header">
                     Users
                 </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
+
+                <a href="add_users.php" style="padding-left'60px;'"class="btn btn-primary">Add User</a>
+
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Username</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <?php foreach($users as $users) : ?>
+
+                        <tr>
+                            <td><?php echo $users->id; ?></td>
+                            <td><img class="admin-photo-thumbnail user_image" src="<?php echo $users->image_path_and_placeholder(); ?>" alt=""></td>
+                            <td><?php echo $users->username; ?></td>
+                            <td><?php echo $users->first_name; ?></td>
+                            <td><?php echo $users->last_name; ?></td>
+                            <td><a class="delete_link" href="delete_users.php?id=<?php echo $users->id; ?>">Delete</a></td>
+                            <td><a class="delete_link" href="edit_users.php?id=<?php echo $users->id; ?>"">Edit</a></td>
+                        </tr>
+
+                        <?php endforeach; ?>
+
+                        </tbody>
+                        
+                    </table>
+                
+                </div>
             </div>
         </div>
         <!-- /.row -->

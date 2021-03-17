@@ -57,6 +57,9 @@ $photos = Photo::find_all();
                         <th>Filename</th>
                         <th>Title</th>
                         <th>Size</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                        <th>View</th>
                     </tr>
                     </thead>
 
@@ -65,12 +68,14 @@ $photos = Photo::find_all();
                     <?php foreach($photos as $photo) : ?>
 
                     <tr>
-                        <td><img width="100" src="<?php echo $photo->picture_path(); ?>" alt=""></td>
+                        <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picture_path(); ?>" alt=""></td>
                         <td><?php echo $photo->id; ?></td>
                         <td><?php echo $photo->filename; ?></td>
                         <td><?php echo $photo->title; ?></td>
                         <td><?php echo $photo->size; ?></td>
-                        <td><a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id?>">Delete</a></td>
+                        <td><a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a></td>
+                        <td><a class="delete_link" href="edit_photo.php?id=<?php echo $photo->id; ?>"">Edit</a></td>
+                        <td><a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>"">View</a></td>
                     </tr>
 
                     <?php endforeach; ?>

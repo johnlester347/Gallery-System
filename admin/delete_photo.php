@@ -24,17 +24,5 @@ if($photo){
 
 }
 
-// if(isset($_GET['delete'])){
-
-//     global $connection;
-
-//     $delete = $_GET['delete'];
-//     $sql = "DELETE FROM photos WHERE id = $delete ";
-//     $database->query($sql);
-
-//     redirect("photos.php");
-
-
-// }
 
 ?>

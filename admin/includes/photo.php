@@ -5,11 +5,13 @@ class Photo extends Db_object {
 
     protected static $db_table = "photos"; // this will change the name of the database that is included in CRUD query
     // sample gumawa ka ng new table magagamit mo padin sya change mo lang yung value or string (reusable na sya)
-    protected static $db_table_fields = array('id', 'title', 'description', 'filename', 'type', 'size');
+    protected static $db_table_fields = array('id', 'title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size');
     public $id;
     public $title;
+    public $caption;
     public $description;
     public $filename;
+    public $alternate_text;
     public $type;
     public $size;
 

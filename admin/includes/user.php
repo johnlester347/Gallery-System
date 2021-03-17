@@ -4,12 +4,25 @@ class User extends Db_object {
 
     protected static $db_table = "users"; // this will change the name of the database that is included in CRUD query
     // sample gumawa ka ng new table magagamit mo padin sya change mo lang yung value or string (reusable na sya)
-    protected static $db_table_fields = array('username', 'password', 'last_name', 'first_name');
+    protected static $db_table_fields = array('username', 'password', 'last_name', 'first_name', 'user_image');
     public $id;
     public $username;
     public $password;
     public $first_name;
     public $last_name;
+    public $user_image;
+    public $upload_directory = "images";
+    public $image_placeholder = "http://placehold.it/400x400&text=image";
+
+
+    public function image_path_and_placeholder() {
+
+        return empty($this->user_image) ? $this->image_path_and_placeholder : $this->upload_directory.DS.$this->user_image;
+
+
+    }
+
+
 
 
     public static function verify_user($username, $password) {
@@ -35,6 +48,8 @@ class User extends Db_object {
 
 
 }
+
+
 
 
    

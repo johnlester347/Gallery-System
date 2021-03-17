@@ -33,7 +33,7 @@ class Db_object {
 
     public static function instantiation($the_record) { // the $found_user is a record from database using SELECT * FROM users
         
-        $calling_class = get_called_class();
+        $calling_class = get_called_class(); // 
 
         $the_object = new $calling_class; // eto yung parang || new User || pag naka instantiate
 
