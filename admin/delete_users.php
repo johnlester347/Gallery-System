@@ -17,6 +17,7 @@ $users = User::find_by_id($user_id);
 if($users) {
 
     $users->delete();
+    $users->unlink_photo();
     redirect("users.php");
 
 } else {
@@ -24,6 +25,5 @@ if($users) {
     redirect("users.php");
 
 }
-        
 
 ?>

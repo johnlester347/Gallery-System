@@ -6,9 +6,16 @@
 
 <?php 
 
-    $user = new User();
 
-    if(isset($_POST['create'])){
+    if(empty($_GET['id'])){
+
+    redirect("users.php");
+    
+    } 
+
+    $user = User::find_by_id($_GET['id']);
+
+    if(isset($_POST['update'])){
 
         if($user) {
 
@@ -16,11 +23,26 @@
             $user->password = $_POST['password'];   
             $user->first_name = $_POST['first_name'];   
             $user->last_name = $_POST['last_name'];   
-            $user->set_file($_FILES['user_image']);
+            
+
+            if(empty($_FILES['user_image'])){
+            
+                $user->save();
+            
+            } else {
+
+                $user->set_file($_FILES['user_image']);
+                $user->save_user_and_image();
+                $user->save();
+
+                redirect("edit_users.php?id={$user->id}");
+
+            }
+
 
             if($user->save_user_and_image()){
 
-                $message = "Photo uploaded successfully";
+                $message = "<h2>Update successful</h2>";
 
             } else {
 
@@ -73,27 +95,33 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Add User   
+                    Update User   
                 </h1>
 
+                <div class="col-md-6">
+                
+                <img class="img-responsive" src="<?php echo $user->image_path_and_placeholder(); ?>" alt="image">
+                
+                </div>
+
             <form action="" method="post" enctype="multipart/form-data">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-6">
                     <?php echo $message; ?>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control">
+                        <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>">
                     </div> 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
                     </div> 
                     <div class="form-group">
                         <label for="firstname">Firstname</label>
-                        <input type="text" name="first_name" class="form-control">
+                        <input type="text" name="first_name" class="form-control" value="<?php echo $user->first_name; ?>">
                     </div> 
                     <div class="form-group">
                         <label for="lastname">Lastname</label>
-                        <input type="text" name="last_name" class="form-control">
+                        <input type="text" name="last_name" class="form-control" value="<?php echo $user->last_name; ?>">
                     </div> 
                     <div class="form-group">
                         <label for="images">Images</label><br>
@@ -101,7 +129,12 @@
                     </div> 
 
                     <div class="form-group">
-                        <input type="submit" name="create" value="Submit" class="btn btn-primary pull-right">
+                        <a class="delete_link btn btn-danger pull-left" href="delete_users.php?id=<?php echo $user->id; ?>">Delete</a>
+                        <!-- <input href="delete_users.php?id=//<//?php //echo $user->id; ?>"  type="submit" name="delete" value="Delete" class="btn btn-danger pull-left"> -->
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
                     </div>
 
                 </div>

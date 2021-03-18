@@ -48,10 +48,10 @@ $users = User::find_all();
                     Users
                 </h1>
 
-                <a href="add_users.php" style="padding-left'60px;'"class="btn btn-primary">Add User</a>
+                <a href="add_users.php" class="btn btn-primary">Add User</a>
 
                 <div class="col-md-12">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Id</th>

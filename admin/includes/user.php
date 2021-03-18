@@ -14,16 +14,47 @@ class User extends Db_object {
     public $upload_directory = "images";
     public $image_placeholder = "http://placehold.it/400x400&text=image";
 
-
     public function image_path_and_placeholder() {
 
-        return empty($this->user_image) ? $this->image_path_and_placeholder : $this->upload_directory.DS.$this->user_image;
+        return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory.DS.$this->user_image;
 
 
     }
 
+    //This is passing $_FILES['uploaded_file'] as an argument
 
 
+    //Upload file
+    public function save_user_and_image() {
+        
+
+            if(!empty($this->errors)) { // if this array error is not empty
+                return false;
+            }
+
+            if(empty($this->user_image) || empty($this->tmp_path)) { // if the property file is empty and property tmp_path is empty
+                $this->errors[] = "the file was not available"; // add this inside the property error which is array
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image; // this is the location or directory of the file
+
+            if(file_exists($target_path)) { // if yung $target_path ay true the execute this  
+                $this->errors[] = "This file {$this->user_image} already exists"; // Then assign this string inside the array error
+                return false;
+            }
+
+            if(move_uploaded_file($this->tmp_path, $target_path)){ // this will going to move the temporary file to permanent location
+                unset($this->tmp_path);
+                return true;
+            } else {
+                $this->errors[] = "The file directory probably does not have permission";
+                return false;
+            }
+
+            $this->create(); 
+
+    }
 
     public static function verify_user($username, $password) {
         global $database;
@@ -39,12 +70,18 @@ class User extends Db_object {
 
     }
 
+    public function user_picture_path() {
 
+        return $this->upload_directory.DS.$this->user_image;
 
+    }
 
+    public function unlink_photo() {
 
-   
+            $target_path = SITE_ROOT.DS. 'admin' .DS. $this->user_picture_path();
+            return unlink($target_path) ? true : false; 
 
+    }
 
 
 }
