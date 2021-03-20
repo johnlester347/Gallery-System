@@ -26,6 +26,7 @@
 
                 $message = join("<br>", $user->errors);
             }
+            $user->create();
         }
 
     } else {
