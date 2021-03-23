@@ -17,7 +17,7 @@ $comments = Comment::find_by_id($comment_id);
 if($comments) {
 
     $comments->delete();
-    redirect("comments_photo    .php?id={$comments->photo_id}");
+    redirect("comments_photo.php?id={$comments->photo_id}");
 
 } else {
 
