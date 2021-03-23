@@ -28,8 +28,6 @@ $photos = Photo::find_all();
             <!-- Top Menu Items -->
             <?php  include "includes/top_nav.php"; ?>
 
-
-
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <?php  include "includes/side_nav.php"; ?>
 
@@ -57,6 +55,7 @@ $photos = Photo::find_all();
                         <th>Filename</th>
                         <th>Title</th>
                         <th>Size</th>
+                        <th>Comments</th>
                         <th>Delete</th>
                         <th>Edit</th>
                         <th>View</th>
@@ -73,9 +72,16 @@ $photos = Photo::find_all();
                         <td><?php echo $photo->filename; ?></td>
                         <td><?php echo $photo->title; ?></td>
                         <td><?php echo $photo->size; ?></td>
-                        <td><a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a></td>
-                        <td><a class="delete_link" href="edit_photo.php?id=<?php echo $photo->id; ?>"">Edit</a></td>
-                        <td><a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>"">View</a></td>
+                        <td><a class="action_links" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a></td>
+                        <td><a class="action_links" href="edit_photo.php?id=<?php echo $photo->id; ?>"">Edit</a></td>
+                        <td><a class="action_links" href="../photo.php?id=<?php echo $photo->id; ?>"">View</a></td>
+                        <td>
+										<!--Count comments and link to comments for that photo-->
+										<?php $comments = Comment::find_the_comments($photo->id); ?>
+										<a href="comments_photo.php?id=<?php echo $photo->id;  ?>"><?php echo count($comments);?></a>
+							
+									</td>   
+                       
                     </tr>
 
                     <?php endforeach; ?>
