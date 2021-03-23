@@ -35,13 +35,6 @@
 
     $comments = Comment::find_the_comments($photo->id);
 
-   
-
-
-
-
-
-
 ?>
 
     <!-- Navigation -->
@@ -60,10 +53,6 @@
                 <!-- Title -->
                 <h1><?php echo $photo->title; ?></h1>
         
-                
-                
-                
-
                 <!-- Author -->
                 <p class="lead">
 						by <a href="#">Start Bootstrap</a>
@@ -106,8 +95,6 @@
                             <textarea name="body" class="form-control" rows="3"></textarea>
                         </div>
 
-                
-
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
                        
@@ -129,7 +116,7 @@
 							
 						
 							<h4 class="media-heading"><?php echo $comment->author; ?>
-								<small>August 25, 2014 at 9:30 PM</small>
+								<small><?php echo $comment->comment_date; ?> at 9:30 PM</small>
 							</h4>
 							<?php echo $comment->body; ?>
 						</div>

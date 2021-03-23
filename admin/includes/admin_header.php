@@ -33,6 +33,8 @@
     <link href="css/styles.css" rel="stylesheet">
 
     <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
 </head>
 
