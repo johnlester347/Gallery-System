@@ -6,13 +6,28 @@ class Session {
     private $signed_in = false;
     public $user_id;
     public $message;
+    public $count;
 
     function __construct() { // this will goint to run automatic to start the session, but first you need to instantiate the class Session
         // for this pre_define function of php to run
 
         session_start();
+        $this->visitor_count();
         $this->check_the_login();
         $this->check_message();
+    }
+
+    public function visitor_count() {
+
+        if(isset($_SESSION['count'])){
+
+            return $this->count = $_SESSION['count']++;
+
+        } else {
+
+            return $_SESSION['count'] = 1;
+        }
+
     }
 
     public function message($msg=""){

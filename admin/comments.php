@@ -1,5 +1,16 @@
 <?php include "includes/admin_header.php"; ?>
 
+
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
+
+
+<?php 
+
+$comments = Comment::find_all();
+
+
+?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -10,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../index.php">Visit Homepage</a>
+                <a class="navbar-brand" href="index.php">Admin Gallery</a>
             </div>
 
 
@@ -34,16 +45,38 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Comments
+                    All  Comments
                 </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
+
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Body</th>
+                            <th>Author</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <?php foreach($comments as $comments) : ?>
+
+                        <tr>
+                            <td><?php echo $comments->id; ?></td>
+                            <td><?php echo $comments->author; ?></td>
+                            <td><?php echo $comments->body; ?></td>
+                            <td><a class="delete_link" href="delete_comment.php?id=<?php echo $comments->id; ?>">Delete</a></td>
+                        </tr>
+
+                        <?php endforeach; ?>
+
+                        </tbody>
+                        
+                    </table>
+                
+                </div>
             </div>
         </div>
         <!-- /.row -->

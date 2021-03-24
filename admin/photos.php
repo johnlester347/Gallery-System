@@ -1,5 +1,16 @@
 <?php include "includes/admin_header.php"; ?>
 
+
+<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
+
+
+<?php 
+
+$photos = Photo::find_all();
+
+
+?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,8 +27,6 @@
 
             <!-- Top Menu Items -->
             <?php  include "includes/top_nav.php"; ?>
-
-
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <?php  include "includes/side_nav.php"; ?>
@@ -43,20 +52,40 @@
                     <tr>
                         <th>Photo</th>
                         <th>Id</th>
-                        <th>File Name</th>
+                        <th>Filename</th>
                         <th>Title</th>
                         <th>Size</th>
+                        <th>Comments</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                        <th>View</th>
                     </tr>
                     </thead>
 
                     <tbody>
+
+                    <?php foreach($photos as $photo) : ?>
+
                     <tr>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
+                        <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picture_path(); ?>" alt=""></td>
+                        <td><?php echo $photo->id; ?></td>
+                        <td><?php echo $photo->filename; ?></td>
+                        <td><?php echo $photo->title; ?></td>
+                        <td><?php echo $photo->size; ?></td>
+                        <td><a class="action_links" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a></td>
+                        <td><a class="action_links" href="edit_photo.php?id=<?php echo $photo->id; ?>"">Edit</a></td>
+                        <td><a class="action_links" href="../photo.php?id=<?php echo $photo->id; ?>"">View</a></td>
+                        <td>
+										<!--Count comments and link to comments for that photo-->
+										<?php $comments = Comment::find_the_comments($photo->id); ?>
+										<a href="comments_photo.php?id=<?php echo $photo->id;  ?>"><?php echo count($comments);?></a>
+							
+									</td>   
+                       
                     </tr>
+
+                    <?php endforeach; ?>
+
                     </tbody>
                     
                 </table>

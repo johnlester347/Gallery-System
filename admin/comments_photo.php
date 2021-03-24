@@ -6,7 +6,13 @@
 
 <?php 
 
-$users = User::find_all();
+if(empty($_GET['id'])){
+
+    redirect("photos.php");
+}
+
+
+$comments = Comment::find_the_comments($_GET['id']);
 
 
 ?>
@@ -45,37 +51,29 @@ $users = User::find_all();
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Users
+                    Delete Comments
                 </h1>
 
-                <a href="add_users.php" class="btn btn-primary">Add User</a>
-
                 <div class="col-md-12">
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Image</th>
-                            <th>Username</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
+                            <th>Body</th>
+                            <th>Author</th>
                             <th>Delete</th>
-                            <th>Edit</th>
                         </tr>
                         </thead>
 
                         <tbody>
 
-                        <?php foreach($users as $users) : ?>
+                        <?php foreach($comments as $comments) : ?>
 
                         <tr>
-                            <td><?php echo $users->id; ?></td>
-                            <td><img class="admin-photo-thumbnail user_image" src="<?php echo $users->image_path_and_placeholder(); ?>" alt=""></td>
-                            <td><?php echo $users->username; ?></td>
-                            <td><?php echo $users->first_name; ?></td>
-                            <td><?php echo $users->last_name; ?></td>
-                            <td><a class="delete_link" href="delete_users.php?id=<?php echo $users->id; ?>">Delete</a></td>
-                            <td><a class="delete_link" href="edit_users.php?id=<?php echo $users->id; ?>"">Edit</a></td>
+                            <td><?php echo $comments->id; ?></td>
+                            <td><?php echo $comments->author; ?></td>
+                            <td><?php echo $comments->body; ?></td>
+                            <td><a class="delete_link" href="delete_comment.php?id=<?php echo $comments->id; ?>">Delete</a></td>
                         </tr>
 
                         <?php endforeach; ?>
