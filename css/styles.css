@@ -1,0 +1,32 @@
+.home_page_photo {
+  width: 200px;
+  height: 230px !important;
+}
+
+.paginate_next {
+  margin-right: 132px !important;
+}
+
+.paginate_left {
+  margin-left: 132px !important;
+}
+
+.pager .active a {
+  background-color: rgb(38, 0, 255);
+  color: #fff;
+  border-radius: 0px;
+}
+
+.pager .active a:hover {
+  background-color: rgb(38, 0, 255);
+  color: #fff;
+  border-radius: 0px;
+}
+
+.pager .box a:hover {
+  border-radius: 0px;
+}
+
+.pager .box a {
+  border-radius: 0px;
+}

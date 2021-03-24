@@ -204,7 +204,7 @@ class Db_object {
 
         global $database;
 
-        $sql = "SELECT COUNT(*) FROM ". static::$db_table;
+        $sql = "SELECT COUNT(*) FROM ". static::$db_table; // yung count is bibilangin nya yung lahat ng nasa database
         $result_set = $database->query($sql);
         $row = mysqli_fetch_array($result_set);
 
