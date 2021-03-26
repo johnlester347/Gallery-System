@@ -21,7 +21,7 @@ class Session {
 
         if(isset($_SESSION['count'])){
 
-            return $this->count = $_SESSION['count']--;
+            return $this->count = $_SESSION['count']++;
 
         } else {
 

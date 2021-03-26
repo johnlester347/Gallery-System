@@ -83,13 +83,32 @@ class User extends Db_object {
 
     }
 
+    //Saving image with ajax from modal
+	public function ajax_save_user_image($user_image, $user_id){
+		
+		global $database;
+		
+		$user_image = $database->escape_string($user_image);
+		$user_id = $database->escape_string($user_id);
+		
+		$this->user_image = $user_image;
+		$this->id = $user_id;
+		
+		
+		$sql = "UPDATE " .self::$db_table ." SET user_image = '{$this->user_image}' ";
+        $sql .= "WHERE id = {$this->id} " ;
+		$update_image = $database->query($sql);
+		
+		echo $this->image_path_and_placeholder();
+		
+		
+		
+	}
+
+
+
+
 
 }
-
-
-
-
-   
-
 
 ?>

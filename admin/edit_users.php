@@ -1,4 +1,5 @@
 <?php include "includes/admin_header.php"; ?>
+<?php include "includes/photo_library_modal.php"; ?>
 
 
 <?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
@@ -61,6 +62,7 @@
 
 
 
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -98,9 +100,9 @@
                     Update User   
                 </h1>
 
-                <div class="col-md-6">
+                <div class="col-md-6 user_image_box">
                 
-                <img class="img-responsive" src="<?php echo $user->image_path_and_placeholder(); ?>" alt="image">
+                <a href="#" data-toggle="modal" data-target="#photo-library"><img class="img-responsive" src="<?php echo $user->image_path_and_placeholder(); ?>" alt="image"></a>
                 
                 </div>
 
@@ -129,7 +131,7 @@
                     </div> 
 
                     <div class="form-group">
-                        <a class="delete_link btn btn-danger pull-left" href="delete_users.php?id=<?php echo $user->id; ?>">Delete</a>
+                        <a id="user-id" class="delete_link btn btn-danger pull-left" href="delete_users.php?id=<?php echo $user->id; ?>">Delete</a>
                         <!-- <input href="delete_users.php?id=//<//?php //echo $user->id; ?>"  type="submit" name="delete" value="Delete" class="btn btn-danger pull-left"> -->
                     </div>
 
