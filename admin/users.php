@@ -21,7 +21,7 @@ $users = User::find_all();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Admin Gallery</a>
+                <a class="navbar-brand" href="index.php">Admin Gallery System</a>
             </div>
 
 
@@ -47,6 +47,7 @@ $users = User::find_all();
                 <h1 class="page-header">
                     Users
                 </h1>
+                <P class="bg-success"><?php echo $message; ?></P>
 
                 <a href="add_users.php" class="btn btn-primary">Add User</a>
 

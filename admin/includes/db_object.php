@@ -45,12 +45,12 @@ class Db_object {
     
     }    
 
-    public static function find_by_id($id) {
+     //Getting one result by id
+     public static function find_by_id($id){
         global $database;
-
-        $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = $id "); 
-
-        return !empty($the_result_array) ? array_shift($the_result_array) : false; // this will grab the first item in the array 
+        $the_result_array= static::find_by_query("SELECT * FROM " .static::$db_table. " WHERE id = $id ");
+        
+        return !empty($the_result_array)? array_shift($the_result_array) :false;
 
     }
 
@@ -204,7 +204,7 @@ class Db_object {
 
         global $database;
 
-        $sql = "SELECT COUNT(*) FROM ". static::$db_table;
+        $sql = "SELECT COUNT(*) FROM ". static::$db_table; // yung count is bibilangin nya yung lahat ng nasa database
         $result_set = $database->query($sql);
         $row = mysqli_fetch_array($result_set);
 

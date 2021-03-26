@@ -46,7 +46,7 @@
         <div class="row">
 
             <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
 
                 <!-- Blog Post -->
 
@@ -55,13 +55,13 @@
         
                 <!-- Author -->
                 <p class="lead">
-						by <a href="#">Start Bootstrap</a>
+						by <a href="#">John Lester</a>
 					</p>
                 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $photo->photo_date; ?> at 9:00 PM</p>
 
                 <hr>
 
@@ -123,12 +123,12 @@
 					</div>
 					
 					<?php }  ?>
-            </div>
+            <!-- </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <?php require_once "includes/home_sidebar.php"; ?>
+            <?php //require_once "includes/home_sidebar.php"; ?>
 
-        </div>
+        <!-- </div> -->
         <!-- /.row -->
 
         <hr>

@@ -21,7 +21,7 @@ $comments = Comment::find_all();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Admin Gallery</a>
+                <a class="navbar-brand" href="index.php">Admin Gallery System</a>
             </div>
 
 
@@ -47,6 +47,8 @@ $comments = Comment::find_all();
                 <h1 class="page-header">
                     All  Comments
                 </h1>
+
+                <p class="bg-success"><?php echo $session->message; ?></p>
 
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover">

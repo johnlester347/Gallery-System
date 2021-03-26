@@ -15,18 +15,25 @@
             $user->username = $_POST['username'];   
             $user->password = $_POST['password'];   
             $user->first_name = $_POST['first_name'];   
-            $user->last_name = $_POST['last_name'];   
+            $user->last_name = $_POST['last_name'];  
             $user->set_file($_FILES['user_image']);
-
-            if($user->save_user_and_image()){
-
-                $message = "Photo uploaded successfully";
-
+            
+            if(empty($user->username) || empty($user->password) || empty($user->last_name) || empty($user->first_name)){
+                echo "<script>alert('This field should not be empty');</script>";
             } else {
+                if($user->save_user_and_image()){
 
-                $message = join("<br>", $user->errors);
+                    $message = "Photo uploaded successfully";
+    
+                } else {
+                        $message = join("<br>", $user->errors);
+                }
+                $user->create();
             }
-            $user->create();
+
+           
+
+           
         }
 
     } else {
