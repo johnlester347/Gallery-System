@@ -7,6 +7,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/dropzone.js"></script>
 
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});

@@ -29,15 +29,19 @@
             if(empty($_FILES['user_image'])){
             
                 $user->save();
-            
+                redirect("users.php");
+                $session->message("User has been updated");
+
             } else {
 
                 $user->set_file($_FILES['user_image']);
                 $user->save_user_and_image();
                 $user->save();
 
-                redirect("edit_users.php?id={$user->id}");
-
+                // redirect("edit_users.php?id={$user->id}");
+                redirect("users.php");
+                $session->message("User has been updated");
+                
             }
 
 

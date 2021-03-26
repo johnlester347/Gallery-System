@@ -45,6 +45,7 @@ $photos = Photo::find_all();
                 <h1 class="page-header">
                     Photos
                 </h1>
+                <P class="bg-success"><?php echo $session->message; ?></P>
                 <div class="col-md-12">
                 
                 <table class="table table-bordered table-hover">
@@ -55,10 +56,10 @@ $photos = Photo::find_all();
                         <th>Filename</th>
                         <th>Title</th>
                         <th>Size</th>
-                        <th>Comments</th>
                         <th>Delete</th>
                         <th>Edit</th>
                         <th>View</th>
+                        <th>Comments</th>
                     </tr>
                     </thead>
 

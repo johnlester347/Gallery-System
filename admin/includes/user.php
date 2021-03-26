@@ -27,7 +27,6 @@ class User extends Db_object {
     //Upload file
     public function save_user_and_image() {
         
-
             if(!empty($this->errors)) { // if this array error is not empty
                 return false;
             }

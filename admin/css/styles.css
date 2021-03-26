@@ -66,3 +66,7 @@
 #modal_sidebar {
   position: fixed !important;
 }
+
+#login-id {
+  color: white;
+}

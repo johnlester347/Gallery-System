@@ -47,6 +47,7 @@ $users = User::find_all();
                 <h1 class="page-header">
                     Users
                 </h1>
+                <P class="bg-success"><?php echo $message; ?></P>
 
                 <a href="add_users.php" class="btn btn-primary">Add User</a>
 

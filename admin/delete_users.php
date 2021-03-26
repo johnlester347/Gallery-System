@@ -19,10 +19,12 @@ if($users) {
     $users->delete();
     $users->unlink_photo();
     redirect("users.php");
+    $session->message("User {$users->username} has been deleted");
 
 } else {
 
     redirect("users.php");
+    $session->message("User has been deleted");
 
 }
 
